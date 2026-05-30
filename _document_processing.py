@@ -102,9 +102,9 @@ def rename_invoice(
         document_type = UNKNOWN_VALUE
 
     if document_date:
-        base_name = f'{document_date.strftime(date_format)} {company_name} {document_type}'
+        base_name = f'{document_date.strftime(date_format)}_{company_name}_{document_type}'
     else:
-        base_name = f'{DEFAULT_DATE} {company_name} {document_type}'
+        base_name = f'{DEFAULT_DATE}_{company_name}_{document_type}'
 
     # Guard against combined filename exceeding filesystem limits
     # 255 max - 4 (.pdf) - 6 (_(999)) - 1 = 244 chars for base_name
@@ -115,9 +115,9 @@ def rename_invoice(
         if not truncated.strip():
             truncated = UNKNOWN_VALUE
         if document_date:
-            base_name = f'{document_date.strftime(date_format)} {truncated} {document_type}'
+            base_name = f'{document_date.strftime(date_format)}_{truncated}_{document_type}'
         else:
-            base_name = f'{DEFAULT_DATE} {truncated} {document_type}'
+            base_name = f'{DEFAULT_DATE}_{truncated}_{document_type}'
 
     new_name = normalize_unicode(f"{base_name}.pdf")
     new_path = os.path.join(os.path.dirname(pdf_path), new_name)
