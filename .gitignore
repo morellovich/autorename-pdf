@@ -4,7 +4,6 @@ __pycache__/
 /dist/
 /venv/
 /Releases/
-config.yaml
 harmonized-company-names.yaml
 *.pdf
 *.spec
