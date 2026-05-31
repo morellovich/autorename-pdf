@@ -3,12 +3,12 @@
 
 # AI Provider Configuration
 ai:
-  provider: "ollama"              # openai, anthropic, gemini, xai, ollama
-  model: "gemma4:e4b-mlx"         # Model name (provider-specific)
-  api_key: ""                     # Not needed for ollama
-  base_url: ""                    # Custom base URL (optional, for proxies)
-  temperature: 0.0                # 0.0 = deterministic
-  max_retries: 2                  # Retry failed API calls
+  provider: "ollama" # openai, anthropic, gemini, xai, ollama
+  model: "gemma4:e4b-mlx" # Model name (provider-specific)
+  api_key: "" # Not needed for ollama
+  base_url: "" # Custom base URL (optional, for proxies)
+  temperature: 0.0 # 0.0 = deterministic
+  max_retries: 2 # Retry failed API calls
 
 # --- API Key Options ---
 # You can store your API key in two ways:
@@ -28,36 +28,37 @@ ai:
 
 # PDF Processing
 pdf:
-  max_pages: 3                    # Max pages to process per PDF
-  ocr: true                       # false / true / "auto" — PaddleOCR for scanned PDFs
-  vision: false                   # false / true / "auto" — send page images to LLM
-  text_quality_threshold: 0.3     # Triggers OCR/vision when set to "auto"
-  outgoing_invoice: "AR"          # Abbreviation for outgoing invoices (Accounts Receivable)
-  incoming_invoice: "ER"          # Abbreviation for incoming invoices (Expense Reports)
+  max_pages: 3 # Max pages to process per PDF
+  ocr: true # false / true / "auto" — PaddleOCR for scanned PDFs
+  vision: false # false / true / "auto" — send page images to LLM
+  text_quality_threshold: 0.3 # Triggers OCR/vision when set to "auto"
+  outgoing_invoice: "AR" # Abbreviation for outgoing invoices (Accounts Receivable)
+  incoming_invoice: "ER" # Abbreviation for incoming invoices (Expense Reports)
 
 # PaddleOCR Configuration (optional, install via setup.ps1)
 paddleocr:
-  venv_path: "/Users/morell/.local/share/autorename-pdf/paddleocr-venv311"  # Auto-detected if empty
-  language: "en"                   # OCR language code (one language per instance)
-                                   #   "en" = English-only model (smaller, faster)
-                                   #   "de","fr","es",etc. = Latin model (all 59 Latin-script langs incl. English)
-                                   #   "ch" = Chinese model (also handles Japanese and English)
-                                   #   For European docs, use your country code -- it covers English too.
-  device: "auto"                  # "auto" (recommended), "cpu", or "gpu"
+  venv_path: "/Users/morell/.local/share/autorename-pdf/paddleocr-venv311" # Auto-detected if empty
+  language:
+    "en" # OCR language code (one language per instance)
+    #   "en" = English-only model (smaller, faster)
+    #   "de","fr","es",etc. = Latin model (all 59 Latin-script langs incl. English)
+    #   "ch" = Chinese model (also handles Japanese and English)
+    #   For European docs, use your country code -- it covers English too.
+  device: "auto" # "auto" (recommended), "cpu", or "gpu"
   # detection_model: ""           # Detection model (default: PP-OCRv5_mobile_det)
-                                  #   Use "PP-OCRv5_server_det" for higher accuracy
-                                  #   on complex layouts (uses more RAM)
+  #   Use "PP-OCRv5_server_det" for higher accuracy
+  #   on complex layouts (uses more RAM)
   # det_limit_side_len: 736       # Max image side for detection (lower = less RAM)
   # cpu_threads: 4                # CPU threads for OCR inference (default: 4)
 
 # Company Information
 company:
-  name: "Your Company Name"       # Your company name (prevents it being extracted as counterparty)
+  name: "Your Company Name" # Your company name (prevents it being extracted as counterparty)
 
 # Output Settings
 output:
-  language: "same as source document language"  # Language for document type descriptions
-  date_format: "%Y-%m-%d"         # strftime format for filenames (YYYY-MM-DD)
+  language: "same as source document language" # Language for document type descriptions
+  date_format: "%Y-%m-%d" # strftime format for filenames (YYYY-MM-DD)
 
 # Optional AI Prompt Extension
 # Add custom instructions to fine-tune extraction, e.g.:
